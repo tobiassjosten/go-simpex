@@ -2,12 +2,11 @@ package simpex_test
 
 import (
 	"fmt"
+	"reflect"
 	"regexp"
 	"testing"
 
 	"github.com/tobiassjosten/go-simpex"
-
-	"github.com/stretchr/testify/assert"
 )
 
 func TestMatch(t *testing.T) {
@@ -243,10 +242,13 @@ func TestMatch(t *testing.T) {
 
 	for name, tc := range tcs {
 		t.Run(name, func(t *testing.T) {
-			assert.Equal(t, tc.matches, simpex.Match(
-				tc.pattern,
-				tc.text,
-			))
+			matches := simpex.Match(tc.pattern, tc.text)
+			if !reflect.DeepEqual(tc.matches, matches) {
+				t.Fatalf(
+					"simpex.Match(%q, %q) = %q, want %q",
+					tc.pattern, tc.text, matches, tc.matches,
+				)
+			}
 		})
 	}
 }
