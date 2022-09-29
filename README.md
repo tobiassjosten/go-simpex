@@ -14,7 +14,7 @@ Table of contents:
 
 1. Download the module:
 
-    go get -u github.com/gin-gonic/gin
+    go get -u github.com/tobiassjosten/go-simpex
 
 2. Import it in your project:
 
