@@ -22,7 +22,7 @@ Table of contents:
 
 ## Quick start
 
-```
+```go
 package main
 
 import (
@@ -56,7 +56,7 @@ There's one main function, `Match()`, which returns a string slice of captures. 
 
 The following examples might make it easier to understand.
 
-```
+```go
 package main
 
 import (
