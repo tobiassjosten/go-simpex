@@ -44,7 +44,7 @@ Simpex matches patterns against the full texts given, never partially. A pattern
 
 Simpex can match single characters, words, and phrases using the symbols `_`, `^`, and `*` respectively. In order to match those symbols, they can be escaped by doubling them, like `__`, `^^`, and `**`.
 
-- A character is represented by a byte, not a rune. Non-ASCII characters might therefor need
+- A character is represented by any one byte.
 
 - A word is represented by alphanumeric characters (`[a-zA-Z0-9]+` in regexp).
 
