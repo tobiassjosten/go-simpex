@@ -1,4 +1,4 @@
-// Simpex is a simpler and faster alternative to regexp.
+// Package simpex is a simpler and faster alternative to regexp.
 //
 // Usage is very straightforward. You first compile your pattern into a Simpex,
 // which is then used to match against a given text. As a convenience, the
