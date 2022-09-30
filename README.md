@@ -1,4 +1,4 @@
-# simpex
+# simpex [![Go Reference](https://pkg.go.dev/badge/github.com/tobiassjosten/go-simpex.svg)](https://pkg.go.dev/github.com/tobiassjosten/go-simpex) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/144d2bbecde546d18ecf9ce6a4860390)](https://www.codacy.com/gh/tobiassjosten/go-simpex/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tobiassjosten/go-simpex&amp;utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/144d2bbecde546d18ecf9ce6a4860390)](https://www.codacy.com/gh/tobiassjosten/go-simpex/dashboard?utm_source=github.com&utm_medium=referral&utm_content=tobiassjosten/go-simpex&utm_campaign=Badge_Coverage)
 
 A simpler and faster alternative to regular expressions. Sprung from the [Nogfx MUD client](https://github.com/tobiassjosten/nogfx), this Go library can help you match and extract subsets from text.
 
