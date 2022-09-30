@@ -1,22 +1,22 @@
-# simpex
+# simpex [![Go Reference](https://pkg.go.dev/badge/github.com/tobiassjosten/go-simpex.svg)](https://pkg.go.dev/github.com/tobiassjosten/go-simpex) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/144d2bbecde546d18ecf9ce6a4860390)](https://www.codacy.com/gh/tobiassjosten/go-simpex/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=tobiassjosten/go-simpex\&utm_campaign=Badge_Grade) [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/144d2bbecde546d18ecf9ce6a4860390)](https://www.codacy.com/gh/tobiassjosten/go-simpex/dashboard?utm_source=github.com\&utm_medium=referral\&utm_content=tobiassjosten/go-simpex\&utm_campaign=Badge_Coverage)
 
 A simpler and faster alternative to regular expressions. Sprung from the [Nogfx MUD client](https://github.com/tobiassjosten/nogfx), this Go library can help you match and extract subsets from text.
 
 Table of contents:
 
-- [Installation](#installation)
-- [Quick start](#quick-start)
-- [Usage](#usage)
-- [Limitations](#limitations)
-- [Contribute](#contribute)
+*   [Installation](#installation)
+*   [Quick start](#quick-start)
+*   [Usage](#usage)
+*   [Limitations](#limitations)
+*   [Contribute](#contribute)
 
 ## Installation
 
-1. Download the module:
+1.  Download the module:
 
     go get -u github.com/tobiassjosten/go-simpex
 
-2. Import it in your project:
+2.  Import it in your project:
 
     import "github.com/tobiassjosten/go-simpex"
 
@@ -44,11 +44,11 @@ Simpex matches patterns against the full texts given, never partially. A pattern
 
 Simpex can match single characters, words, and phrases using the symbols `_`, `^`, and `*` respectively. In order to match those symbols, they can be escaped by doubling them, like `__`, `^^`, and `**`.
 
-- A character is represented by any one byte.
+*   A character is represented by any one byte.
 
-- A word is represented by alphanumeric characters (`[a-zA-Z0-9]+` in regexp).
+*   A word is represented by alphanumeric characters (`[a-zA-Z0-9]+` in regexp).
 
-- A phrase is represented by anything that would fulfill the other parts of the patter – greedily or otherwise.
+*   A phrase is represented by anything that would fulfill the other parts of the patter – greedily or otherwise.
 
 Simpex can also capture substrings, using the `{` and `}` symbols. Again, escaping them is simply a matter of repeating, like `{{` and `}}`.
 
@@ -95,11 +95,11 @@ func main() {
 
 ## Limitations
 
-- The module deals with bytes and byte slices, meaning it doesn't support wide runes or other non-ASCII characters for its `_` symbol.
+*   The module deals with bytes and byte slices, meaning it doesn't support wide runes or other non-ASCII characters for its `_` symbol.
 
-- The matching algorithm can probably be improved a whole lot. It's developed for use with short texts meant for human reading, so anything outside of that could potentially reveal flaws I haven't bumped into.
+*   The matching algorithm can probably be improved a whole lot. It's developed for use with short texts meant for human reading, so anything outside of that could potentially reveal flaws I haven't bumped into.
 
-- I'm sure there are many other limitations to this. I originally built it for my own needs, it works perfectly for that, and I haven't given too much thought to anything outside of my narrow use case.
+*   I'm sure there are many other limitations to this. I originally built it for my own needs, it works perfectly for that, and I haven't given too much thought to anything outside of my narrow use case.
 
 ## Contribute
 
@@ -117,4 +117,4 @@ There's an extensive test suite, along with a benchmark and fuzzing, which you c
 
 ### Contributors
 
-- [Tobias Sjösten](https://github.com/tobiassjosten)
+*   [Tobias Sjösten](https://github.com/tobiassjosten)
