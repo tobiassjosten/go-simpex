@@ -1,3 +1,8 @@
+// Simpex is a simpler and faster alternative to regexp.
+//
+// Usage is very straightforward. You first compile your pattern into a Simpex,
+// which is then used to match against a given text. As a convenience, the
+// global Match() function handles both compilation and matching.
 package simpex
 
 import (
@@ -25,9 +30,9 @@ var (
 	}
 )
 
-// Match a text against a pattern to see if it matches. If it does, captured
-// matches are returned. If it doesn't, nil is returned.
-
+// Match a text against a pattern to see if it matches. This is a convenience
+// wrapper for Compile() and Simpex.Match(). If it matches, captures matches
+// are returned. It it doesn't, nil is returned.
 func Match(pattern []byte, text []byte) ([][]byte, error) {
 	sx, err := Compile(pattern)
 	if err != nil {
