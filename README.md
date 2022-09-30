@@ -107,11 +107,13 @@ Feel free to [create a ticket](https://github.com/tobiassjosten/go-simpex/issues
 
 Changes can be suggested directly by [creating a pull request](https://github.com/tobiassjosten/go-simpex/compare) but I'd recommend starting an issue first, so you don't end up wasting your time with something I end up rejecting.
 
-There's an extensive test suite, along with a benchmark, which you can use to make sure that your change works and is performant. You can run them as you would any other Go test/benchmark:
+There's an extensive test suite, along with a benchmark and fuzzing, which you can use to make sure that your change works and is performant. You can run them as you would any other Go test/benchmark:
 
     go test ./...
 
     go test ./.. -bench=.
+
+    go test -fuzz FuzzMatch
 
 ### Contributors
 
