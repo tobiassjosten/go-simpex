@@ -147,10 +147,10 @@ func TestMatch(t *testing.T) {
 	}{
 		"mismatch longer pattern": {
 			pattern: []byte("Lorem ipsum dolor sit amet."),
-			text:    []byte("Lorem ipsum."),
+			text:    []byte("Lorem ipsum"),
 		},
 		"mismatch longer text": {
-			pattern: []byte("Lorem ipsum."),
+			pattern: []byte("Lorem ipsum"),
 			text:    []byte("Lorem ipsum dolor sit amet."),
 		},
 

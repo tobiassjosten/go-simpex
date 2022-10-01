@@ -243,7 +243,8 @@ func (sx Simpex) Match(text []byte) [][]byte {
 		}
 	}
 
-	if len(sx) > 0 || len(text) > 0 {
+	// Pattern is exhausted and we still have unmatched text.
+	if len(text) > 0 {
 		return nil
 	}
 
