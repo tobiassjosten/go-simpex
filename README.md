@@ -45,9 +45,7 @@ Simpex matches patterns against the full texts given, never partially. A pattern
 Simpex can match single characters, words, and phrases using the symbols `_`, `^`, and `*` respectively. In order to match those symbols, they can be escaped by doubling them, like `__`, `^^`, and `**`.
 
 *   A character is represented by any one byte.
-
 *   A word is represented by alphanumeric characters (`[a-zA-Z0-9]+` in regexp).
-
 *   A phrase is represented by anything that would fulfill the other parts of the patter – greedily or otherwise.
 
 Simpex can also capture substrings, using the `{` and `}` symbols. Again, escaping them is simply a matter of repeating, like `{{` and `}}`.
@@ -96,9 +94,7 @@ func main() {
 ## Limitations
 
 *   The module deals with bytes and byte slices, meaning it doesn't support wide runes or other non-ASCII characters for its `_` symbol.
-
 *   The matching algorithm can probably be improved a whole lot. It's developed for use with short texts meant for human reading, so anything outside of that could potentially reveal flaws I haven't bumped into.
-
 *   I'm sure there are many other limitations to this. I originally built it for my own needs, it works perfectly for that, and I haven't given too much thought to anything outside of my narrow use case.
 
 ## Contribute
@@ -109,11 +105,13 @@ Changes can be suggested directly by [creating a pull request](https://github.co
 
 There's an extensive test suite, along with a benchmark and fuzzing, which you can use to make sure that your change works and is performant. You can run them as you would any other Go test/benchmark:
 
-    go test ./...
+```bash
+go test ./...
 
-    go test ./.. -bench=.
+go test ./.. -bench=.
 
-    go test -fuzz FuzzMatch
+go test -fuzz FuzzMatch
+```
 
 ### Contributors
 
