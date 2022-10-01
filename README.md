@@ -31,7 +31,10 @@ import (
 )
 
 func main() {
-  matches := simpex.Match("Hello {^}!", "Hello world!")
+  matches, err := simpex.Match("Hello {^}!", "Hello world!")
+  if err != nil {
+    log.Fatal(err)
+  }
   if matches != nil {
     fmt.Printf("Howdy %s!\n", matches[0])
   }
@@ -63,31 +66,42 @@ import (
 )
 
 func main() {
+  // Evaluating a text against a pattern that doesn't match returns a `nil`
+  // slice. On match, you instead get an instantiated `[][]byte` slice, which
+  // contains any {captures} defined by the pattern.
   var matches [][]byte
 
+  // An error is returned only when the pattern doesn't compile, usually due to
+  // it being malformed.
+  var err error
+
   // Match a character.
-  simpex.Match("Hello w_rld!", "Hello world!") != nil
+  matches, err = simpex.Match("Hello w_rld!", "Hello world!")
 
   // Match an underscore.
-  simpex.Match("snake__case", "snake_case") != nil
+  matches, err = simpex.Match("snake__case", "snake_case")
 
   // Match a word.
-  simpex.Match("Hello ^!", "Hello world!") != nil
+  matches, err = simpex.Match("Hello ^!", "Hello world!")
 
   // Match a caret.
-  simpex.Match("Look up! ^^", "Look up! ^") != nil
+  matches, err = simpex.Match("Look up! ^^", "Look up! ^")
 
   // Match a phrase.
-  simpex.Match("*!", "Hello world!") != nil
+  matches, err = simpex.Match("*!", "Hello world!")
 
   // Match a star.
-  simpex.Match("It's a star! **", "It's a star! *") != nil
+  matches, err = simpex.Match("It's a star! **", "It's a star! *")
 
   // Capture substrings and print: "Howdy world! I wonder, how are you?"
-  matches := simpex.Match("Hello {^}, {*}{_}", "Hello world, how are you?")
+  matches, err = simpex.Match("Hello {^}, {*}?", "Hello world, how are you?")
   if matches != nil {
-    fmt.Printf("Howdy %s! I wonder, %s%s\n", matches[0], matches[1], matches[2])
+    fmt.Printf("Howdy %s! I wonder, %s?\n", matches[0], matches[1])
   }
+
+  // Precompile the pattern for better performance.
+  sx, err := simpex.Compile("Hello w_rld!")
+  matches = sx.Match("Hello world!")
 }
 ```
 
