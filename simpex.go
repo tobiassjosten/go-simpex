@@ -208,11 +208,7 @@ func (sx Simpex) Match(text []byte) [][]byte {
 
 			// Find the beginning of the next following non-symbol
 			// subtext, from where we'll match this phrase.
-			start := bytes.IndexFunc(sx, isnotsymbol)
-
-			// With no following non-symbols we make this phrase a
-			// greedy one, matching as much as possible.
-			if start >= 0 {
+			if start := bytes.IndexFunc(sx, isnotsymbol); start >= 0 {
 				end := bytes.IndexFunc(sx[start:], issymbol) + start
 				if end-start < 0 {
 					end = len(sx)

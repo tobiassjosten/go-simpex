@@ -94,6 +94,31 @@ func TestCompile(t *testing.T) {
 			pattern: []byte("*^"),
 			error:   true,
 		},
+
+		"reserved capture start symbol": {
+			pattern: []byte("\x02"),
+			error:   true,
+		},
+
+		"reserved capture end symbol": {
+			pattern: []byte("\x03"),
+			error:   true,
+		},
+
+		"reserved character symbol": {
+			pattern: []byte("\x1f"),
+			error:   true,
+		},
+
+		"reserved word symbol": {
+			pattern: []byte("\x1e"),
+			error:   true,
+		},
+
+		"reserved phrase symbol": {
+			pattern: []byte("\x1d"),
+			error:   true,
+		},
 	}
 
 	for name, tc := range tcs {
@@ -155,6 +180,10 @@ func TestMatch(t *testing.T) {
 			matches: [][]byte{[]byte("{Lorem} ipsum")},
 		},
 
+		"character match empty": {
+			pattern: []byte("_"),
+			text:    []byte(""),
+		},
 		"character match single": {
 			pattern: []byte("_"),
 			text:    []byte("a"),
@@ -186,6 +215,10 @@ func TestMatch(t *testing.T) {
 			matches: [][]byte{},
 		},
 
+		"word match empty": {
+			pattern: []byte("^"),
+			text:    []byte(""),
+		},
 		"word match single": {
 			pattern: []byte("^"),
 			text:    []byte("asdf"),
@@ -195,6 +228,15 @@ func TestMatch(t *testing.T) {
 			pattern: []byte("{^}"),
 			text:    []byte("asdf"),
 			matches: [][]byte{[]byte("asdf")},
+		},
+		"word match prefix": {
+			pattern: []byte("^df"),
+			text:    []byte("asdf"),
+			matches: [][]byte{},
+		},
+		"word match non-match prefix": {
+			pattern: []byte("^df"),
+			text:    []byte("asdd"),
 		},
 		"word match simple": {
 			pattern: []byte("Lorem ^ dolor sit amet."),
@@ -206,7 +248,7 @@ func TestMatch(t *testing.T) {
 			text:    []byte("Lorem ipsum dolor sit amet."),
 			matches: [][]byte{[]byte("ipsum")},
 		},
-		"word match prefix": {
+		"word match mid prefix": {
 			pattern: []byte("Lorem ^sum dolor sit amet."),
 			text:    []byte("Lorem ipsum dolor sit amet."),
 			matches: [][]byte{},
@@ -237,6 +279,10 @@ func TestMatch(t *testing.T) {
 			matches: [][]byte{},
 		},
 
+		"phrase match empty": {
+			pattern: []byte("*"),
+			text:    []byte(""),
+		},
 		"phrase match single": {
 			pattern: []byte("*"),
 			text:    []byte("asdf"),
@@ -337,6 +383,10 @@ func TestMatch(t *testing.T) {
 			pattern: []byte("Lorem ipsum dolor ***."),
 			text:    []byte("Lorem ipsum dolor *sit amet."),
 			matches: [][]byte{},
+		},
+		"phrase non-matching following": {
+			pattern: []byte("* amet"),
+			text:    []byte("asdf"),
 		},
 
 		"combination match simple": {
